@@ -5,8 +5,7 @@ import { Http, Headers } from '@angular/http';
 
 @Injectable()
 export class Api {
-  //url: string = 'http://localhost:4000';
-  url: string = 'https://api-agenda02.now.sh';
+  url: string = 'http://localhost:4000';
   apiUrl: string = this.url + '/api/v1'
 
   constructor(public http: Http) {
