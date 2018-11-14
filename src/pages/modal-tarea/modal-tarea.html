@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{nuevo}} tarea.</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item no-lines>
+      <ion-label floating>Tarea</ion-label>
+      <ion-input type="text" [(ngModel)]="tarea.tarea" name="tarea" [readonly]="isReadonly"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label floating>Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="tarea.descripcion" name="descripcion"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label >Tiempo</ion-label>
+      <ion-select interface="popover" [(ngModel)]="tarea.idTiempo" >
+        <ion-option *ngFor="let tiempo of tiempos" value="{{ tiempo.id }}">
+          {{ tiempo.descripcion }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item no-lines>
+      <button ion-button full icon-end (click)="actualizar()">
+        Guardar
+        <ion-icon class="padLeft" name="ios-checkmark-circle-outline"></ion-icon>
+      </button>
+    </ion-item>
+</ion-content>

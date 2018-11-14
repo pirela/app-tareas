@@ -1,0 +1,69 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Mis tareas
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargaMasiva()">
+        <ion-icon class="padLef" item-end name="ios-cloud-upload-outline"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="modificar({}, true)">
+        <ion-icon class="padLef" item-end name="ios-add-circle-outline"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="reordenarTareas()">
+        <ion-icon class="padLef"item-end name="ios-shuffle-outline" ></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="modalTiempo()">
+        <ion-icon class="padLef" item-end name="ios-clock-outline" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-list >
+      <div *ngFor="let tarea of tareas; let i = index;">
+        <ion-item no-lines>
+          <div >
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <h2 text-justify text-wrap>Tarea: {{tarea.tarea}}</h2>
+                  <h2 text-justify text-wrap>Descripción: {{tarea.descripcion}}</h2>
+                  <h2 text-justify>Tiempo: {{toTime(tarea.tiempoFin)}}</h2>
+                  <h2 text-justify>Tiempo transcurrido: {{toTime(tarea.tiempoRealizado)}}</h2>
+                  <h2 text-justify>Pausas: {{tarea.cantPausa}}</h2>
+                </ion-col>
+                <ion-col col-3 *ngIf="i == 0" >
+                  <ion-item>
+                    <ion-icon color="primary" class="icon24" name="ios-play-outline" (click)="comenzar(tarea)"></ion-icon>
+                    <ion-icon color="primary" class="icon24" name="ios-pause-outline" (click)="pausa(tarea)"></ion-icon>
+                    <ion-icon color="primary" class="icon24" name="ios-refresh-outline"(click)="reiniciar(tarea)"></ion-icon><br>
+                    <ion-icon color="primary" class="icon24" name="ios-checkmark-circle-outline" (click)="completada(tarea)"></ion-icon>
+                    <ion-icon color="primary" class="icon24" name="ios-create-outline" (click)="modificar(tarea, false)"></ion-icon>
+                    <ion-icon color="primary" class="icon24" name="ios-trash-outline" (click)="eliminar(tarea)"></ion-icon>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-3 *ngIf="i != 0" >
+                  <ion-item>
+                    <ion-icon color="primary" class="icon24"  name="ios-create-outline" (click)="modificar(tarea, false)"></ion-icon>
+                    <ion-icon color="primary" class="icon24"  name="ios-trash-outline" (click)="eliminar(tarea)"></ion-icon>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                  <ion-item>
+                    <label item-end class="texto28">
+                      {{toTime(tarea.tiempoFin - tarea.tiempoRealizado)}}
+                    </label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

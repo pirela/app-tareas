@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Gráfica
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-7>
+        <ion-item no-lines>
+          <label item-start>{{textoGraf}}</label>
+          <ion-icon item-end [name]="icons.grafica" color="primary" (click)="datosGrafica()"></ion-icon>
+        </ion-item>
+        <canvas #lineCanvas></canvas>
+      </ion-col>
+      <ion-col col-5>
+        <ion-item no-lines>
+          <label item-start>{{textoHist}}</label>
+          <ion-icon item-end [name]="icons.historial" color="primary" (click)="cambiarHistorial()"></ion-icon>
+        </ion-item>
+        <div>
+          <ion-grid>
+            <div *ngFor="let tarea of historialTareas; let i = index">
+            <ion-row *ngIf="i == 0" >
+              <ion-col>
+                Tarea
+              </ion-col>
+              <ion-col>
+                {{tarea.completada ? 'Tiempo máximo' : 'Tiempo mínimo' }}
+              </ion-col>
+              <ion-col>
+                {{tarea.completada ? 'Tiempo realizado' : 'Tiempo máximo' }}
+              </ion-col>
+              <ion-col>
+                {{tarea.completada ? 'Pausas' : 'Tiempo transcurrido' }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-3>
+                {{tarea.tarea}}
+              </ion-col>
+              <ion-col col-3>
+                {{tarea.completada ? toTime(tarea.tiempoFin) : toTime(tarea.tiempoIni) }}
+              </ion-col>
+              <ion-col col-3>
+                {{tarea.completada ? toTime(tarea.tiempoRealizado) : toTime(tarea.tiempoFin) }}
+              </ion-col>
+              <ion-col col-3>
+                {{tarea.completada ? tarea.cantPausa : toTime(tarea.tiempoRealizado) }}
+              </ion-col>
+            </ion-row>
+            </div>
+          </ion-grid>
+        </div>
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <button ion-button full (click)="paginar(false)"> Anterior </button>
+              </ion-col>
+              <ion-col col-6>
+                <button ion-button full (click)="paginar(true)"> Siguiente </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

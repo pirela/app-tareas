@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Perfil
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="ios-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="ios-information-circle" color="primary" item-start></ion-icon>
+      {{ user.identificacion }}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-person" color="primary" item-start></ion-icon>
+      {{ user.nombre }} {{ user.apellido }}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-call" color="primary" item-start></ion-icon>
+      {{ user.telefono }}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-mail" color="primary" item-start></ion-icon>
+      {{ user.email }}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="logo-github" color="primary" item-start></ion-icon>
+      {{ user.gitHub }}
+    </ion-item>
+
+    <br/> <br/>
+    <button (click)="logout()" color="danger" ion-button  block icon-end>
+      Cerrar sesión
+      <ion-icon name="ios-log-out"></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

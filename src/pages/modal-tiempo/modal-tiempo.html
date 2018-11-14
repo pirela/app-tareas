@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-item no-lines>
+      <label item-start>Nueva duración.</label>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines>
+    <ion-label>Descripción</ion-label>
+    <ion-input type="text" [(ngModel)]="tiempo.descripcion" name="descripcion" ></ion-input>
+  </ion-item>
+  <ion-item no-lines>
+    <ion-label>Tiempo minimo</ion-label>
+    <ion-datetime displayFormat="HH:mm:ss" hourValues="00,01" [(ngModel)]="tiempo.tiempoIni" name="tiempoIni"></ion-datetime>
+  </ion-item>
+  <ion-item no-lines>
+    <ion-label>Tiempo máximo</ion-label>
+    <ion-datetime displayFormat="HH:mm:ss" [disabled]="!tiempo.tiempoIni"  hourValues="00,01" [min]="tiempo.tiempoIni" [(ngModel)]="tiempo.tiempoFin" name="tiempoFin"></ion-datetime>
+  </ion-item>
+  <ion-item no-lines>
+    <button ion-button full icon-end (click)="actualizar()">
+      Guardar
+      <ion-icon class="padLeft" name="ios-checkmark-circle-outline"></ion-icon>
+    </button>
+  </ion-item>
+</ion-content>

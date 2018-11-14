@@ -1,0 +1,28 @@
+<ion-content scroll="false">
+  <div class="splash-bg"></div>
+  <div class="splash-info">
+    <div class="splash-logo"></div>
+    <br>
+    <div class="splash-intro">
+      Bienvenido
+    </div>
+  </div>
+
+  <div padding>
+    <form (submit)="login()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" name="email" [(ngModel)]="user.email" readonly></ion-input>
+        </ion-item>
+
+        <br />
+
+        <div padding>
+          <button type="submit" color="primary" ion-button block> Iniciar sesión </button>
+        </div>
+
+      </ion-list>
+    </form>
+  </div>
+</ion-content>

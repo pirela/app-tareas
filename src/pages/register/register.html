@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Registrate</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding>
+    <form (submit)="signup()">
+      <ion-list>
+
+        <ion-item>
+          <ion-label> {{ profesional.esDni ? 'DNI': 'EMPRESA' }} </ion-label>
+          <ion-toggle name="esDNI" [(ngModel)]="profesional.esDni"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>{{ profesional.esDni ? 'DNI': 'EMPRESA' }}</ion-label>
+          <ion-input type="text" name="DNI" [(ngModel)]="profesional.dni" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Nombre</ion-label>
+          <ion-input type="text" name="nombre" [(ngModel)]="profesional.nombre" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Teléfono</ion-label>
+          <ion-input type="text" name="telefono" [(ngModel)]="profesional.telefono" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" name="email" [(ngModel)]="profesional.email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Dirección</ion-label>
+          <ion-input type="text" name="direccion" [(ngModel)]="profesional.direccion" required></ion-input>
+        </ion-item>
+
+        <div padding>
+          <button type="submit" color="primary" ion-button block> Registrarse </button>
+          <button
+            ion-button clear
+            type="button"
+            class="right" color="primary"
+            (click)="goToLogin()"
+          >
+            Inicio
+          </button>
+        </div>
+
+      </ion-list>
+    </form>
+  </div>
+
+</ion-content>
